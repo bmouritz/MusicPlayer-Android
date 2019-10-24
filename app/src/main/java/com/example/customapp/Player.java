@@ -221,6 +221,10 @@ public class Player extends AppCompatActivity {
             }
         });
 
+        initSeekBar();
+    }
+
+    private void initSeekBar() {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
