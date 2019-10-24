@@ -1,0 +1,3 @@
+include ':app', ':vectorchildfinder'
+rootProject.name='customapp'
+project(':vectorchildfinder').projectDir = new File('externallibs/VectorChildFinder-master/VectorChildFinder-master/vectorchildfinder')

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <color name="colorPrimary">#2F3131</color>
+        <color name="colorPrimaryDark">#B9C4C9</color>
+        <color name="colorAccent">#426E86</color>
+        <color name="icon_enabled">#000000</color>
+        <color name="background">#2F3131</color>
+        <color name="text">#FFFFFF</color>
+        <color name="icon_disabled">#FFFFFF</color>
+        <color name="white">#FFFFFF</color>
+        <color name="iconSelected">#034f82</color>
+        <color name="icondeSelected">#B9C4C9</color>
+</resources>

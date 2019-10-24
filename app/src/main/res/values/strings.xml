@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name" translatable="true">Music Player</string>
+    <string name="directory" translatable="true">Root Directory</string>
+    <string name="placeholder" translatable="true">Placeholder</string>
+    <string name="language" translatable="true">Change Language        </string>
+    <string name="changeTheme" translatable="true">Change Theme      </string>
+    <string name="settings" translatable="true">Settings</string>
+    <string name="save" translatable="true">Save Playlist</string>
+    <string name="clear" translatable="true">Clear Playlist</string>
+</resources>
