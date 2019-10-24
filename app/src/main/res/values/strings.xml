@@ -7,4 +7,5 @@
     <string name="settings" translatable="true">Settings</string>
     <string name="save" translatable="true">Save Playlist</string>
     <string name="clear" translatable="true">Clear Playlist</string>
+    <string name="savesettings" translatable="true">Save</string>
 </resources>

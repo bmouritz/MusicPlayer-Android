@@ -3,6 +3,7 @@ package com.example.customapp;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,13 +92,19 @@ public class MainActivity extends AppCompatActivity {
         playingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( MediaPlayerSingleton.getInstance().isPlaying()) {
+                if (MediaPlayerSingleton.isPlayingSong()) {
                     playingBtn.setBackgroundResource(R.drawable.play_btn);
                     MediaPlayerSingleton.pause();
                 } else {
                     playingBtn.setBackgroundResource(R.drawable.pause_btn);
                     MediaPlayerSingleton.play();
                 }
+            }
+        });
+        nowPlayingBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

@@ -106,8 +106,8 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
                 editor.putString("lang", lang);
                 editor.putBoolean("bool", darkEnabled);
                 editor.apply();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                finish();
+                startActivity(getIntent());
             }
         });
     }

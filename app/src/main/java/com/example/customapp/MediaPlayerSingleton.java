@@ -1,7 +1,6 @@
 package com.example.customapp;
 
 import android.media.MediaPlayer;
-import android.widget.Button;
 
 // Singleton to manage MediaPlayer
 class MediaPlayerSingleton {
@@ -21,7 +20,7 @@ class MediaPlayerSingleton {
         }
     }
 
-    public boolean isPlaying() {
+    public static boolean isPlayingSong() {
         return mediaPlayer.isPlaying();
     }
 

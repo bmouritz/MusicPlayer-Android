@@ -86,6 +86,7 @@ public class AllMusic extends Fragment {
                 // start music player when song name is clicked
                 String songName = listView.getItemAtPosition(position).toString();
                 play.putExtra("songs",allSongs).putExtra("songName",songName).putExtra("position",position);
+                if(Player.player != null) { Player.player.finish(); }
                 startActivity(play);
             }
         });

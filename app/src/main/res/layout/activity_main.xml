@@ -37,7 +37,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@drawable/tab_borders"
+        android:background="@color/colorPrimary"
         android:gravity="center"
         android:id="@+id/linearlayout"
         app:layout_constraintBottom_toTopOf="@+id/tabLayout"

@@ -1,6 +1,7 @@
 package com.example.customapp;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -22,15 +23,17 @@ import androidx.appcompat.widget.Toolbar;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 
 public class Player extends AppCompatActivity {
     ArrayList<File> songFileList;
     SeekBar seekBar;
     TextView songTitle, curTime, totTime;
-    ImageView playBtn, nextBtn, prevBtn;
+    ImageView playBtn, nextBtn, prevBtn, repeat, shuffle;
     int position;
     Toolbar toolbar;
+    Boolean shuffled, repeated;
 
     MediaPlayer mediaPlayer;
     Bundle bundle;
@@ -72,7 +75,11 @@ public class Player extends AppCompatActivity {
         prevBtn = findViewById(R.id.imageView5);
         nextBtn = findViewById(R.id.imageView4);
         toolbar = findViewById(R.id.toolbarPlaying);
+        shuffle = findViewById(R.id.shuffle);
+        repeat = findViewById(R.id.repeat);
 
+        shuffled = false;
+        repeated = false;
         initToolbar();
     }
 
@@ -86,8 +93,6 @@ public class Player extends AppCompatActivity {
         }
     }
 
-
-
     private void initToolbar() {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -99,7 +104,6 @@ public class Player extends AppCompatActivity {
                 Intent intent = new Intent(Player.this, MainActivity.class);
                 intent.putExtra("songTitle", sname);
                 startActivity(intent);
-                finish();
             }
         });
     }
@@ -111,6 +115,10 @@ public class Player extends AppCompatActivity {
         position = bundle.getInt("position", 0);
         initPlayer(position);
 
+        initButtons();
+    }
+
+    private void initButtons() {
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,6 +145,34 @@ public class Player extends AppCompatActivity {
                     position = 0;
                 }
                 initPlayer(position);
+            }
+        });
+
+        shuffle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!shuffled) {
+                    Collections.shuffle(songFileList);
+                    shuffle.setImageResource(R.drawable.shuffled);
+                    shuffled = true;
+                } else {
+                    shuffle.setImageResource(R.drawable.shuffle);
+                    shuffled = false;
+                }
+            }
+        });
+
+        repeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!repeated) {
+                    mediaPlayer.setLooping(true);
+                    repeat.setImageResource(R.drawable.repeated);
+                    repeated = true;
+                } else {
+                    repeat.setImageResource(R.drawable.repeat);
+                    repeated = false;
+                }
             }
         });
     }
@@ -259,5 +295,10 @@ public class Player extends AppCompatActivity {
         timeLabel += sec;
 
         return timeLabel;
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    public static Activity player; {
+        player = this;
     }
 }

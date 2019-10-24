@@ -3,8 +3,8 @@
     <item>
         <shape android:shape="rectangle">
             <stroke
-                android:width="2dip"
-                android:color="@color/colorPrimaryDark"
+                android:width="1dip"
+                android:color="@color/icon_enabled"
                 />
             <padding
                 android:bottom="0dip"
