@@ -14,17 +14,17 @@ class MediaPlayerSingleton {
         return mediaPlayer;
     }
 
-    public static void play() {
+    static void play() {
         if (!mediaPlayer.isPlaying()) {
             mediaPlayer.start();
         }
     }
 
-    public static boolean isPlayingSong() {
+    static boolean isPlayingSong() {
         return mediaPlayer.isPlaying();
     }
 
-    public static void pause() {
+    static void pause() {
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
         }

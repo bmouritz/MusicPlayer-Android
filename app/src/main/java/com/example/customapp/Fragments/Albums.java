@@ -27,7 +27,7 @@ public class Albums extends ListFragment {
     private List<String> fileList = new ArrayList<>();
     private Intent play;
     private String path = "/sdcard/Music/";
-    Button btn;
+    private Button btn;
 
     public Albums() { /* Required empty public constructor */ }
 

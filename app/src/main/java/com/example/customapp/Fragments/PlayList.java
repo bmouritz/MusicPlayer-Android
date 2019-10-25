@@ -27,7 +27,6 @@ public class PlayList extends Fragment {
     private ArrayList<File> songFileList = new ArrayList<>();
     private Intent play;
     private Button btn;
-    private String[] songs;
 
     public PlayList() { /* Required empty public constructor */ }
 
@@ -58,7 +57,7 @@ public class PlayList extends Fragment {
         if(bundle != null) {
             if (bundle.getParcelableArrayList("playlist") != null) {
                 songFileList = (ArrayList) bundle.getParcelableArrayList("playlist");
-                songs = null;
+                String[] songs = null;
                 display();
             }
         }

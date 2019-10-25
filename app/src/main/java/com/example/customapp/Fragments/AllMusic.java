@@ -34,7 +34,7 @@ import java.util.ArrayList;
 public class AllMusic extends Fragment {
     private ListView listView;
     private Intent play, intent;
-    public Button btn;
+    private Button btn;
 
     private ArrayList<File> playlistSongs = new ArrayList<>();
 

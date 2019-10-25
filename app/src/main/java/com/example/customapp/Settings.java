@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 
-public class Settings extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class Settings extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Toolbar toolbar;
     Switch language, theme;
     Button save;

@@ -19,18 +19,6 @@
         app:layout_constraintTop_toTopOf="parent">
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="376dp"
-        android:layout_height="329dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139"
-        app:srcCompat="@drawable/music3x" />
-
     <SeekBar
         android:id="@+id/musicSeekBar"
         android:layout_width="0dp"
@@ -79,14 +67,14 @@
         android:id="@+id/songTitle"
         android:layout_width="wrap_content"
         android:layout_height="26dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="68dp"
         android:gravity="center"
         android:text="@string/placeholder"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/musicIcon" />
 
     <ImageView
         android:id="@+id/playbtn"
@@ -148,5 +136,17 @@
         app:layout_constraintTop_toBottomOf="@+id/musicSeekBar"
         app:layout_constraintVertical_bias="0.413"
         app:srcCompat="@drawable/skip_fwd_btn" />
+
+    <ImageView
+        android:id="@+id/musicIcon"
+        android:layout_width="328dp"
+        android:layout_height="328dp"
+        android:background="@drawable/music3x"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarPlaying"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
