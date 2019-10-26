@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.customapp.Player;
 import com.example.customapp.R;
@@ -46,6 +47,8 @@ public class PlayList extends Fragment {
             @Override
             public void onClick(View v) {
                 songFileList = new ArrayList<>();
+                Toast toast = Toast.makeText(getContext(), "Playlist cleared", Toast.LENGTH_SHORT);
+                toast.show();
                 display();
             }
         });
@@ -57,7 +60,6 @@ public class PlayList extends Fragment {
         if(bundle != null) {
             if (bundle.getParcelableArrayList("playlist") != null) {
                 songFileList = (ArrayList) bundle.getParcelableArrayList("playlist");
-                String[] songs = null;
                 display();
             }
         }

@@ -41,6 +41,7 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
         initUI();
     }
 
+    //This reduces the size of the settings activity window
     private void initWindow() {
         dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -64,18 +65,12 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     public void initSpinner(Spinner spinner) {
-        ArrayList<String> languagesArray;
-        //Sets ArrayList based on what language is already selected
-        if(langSelected.equals("vi")){
-            languagesArray = new ArrayList<>();
-            languagesArray.add("Vietnamese");
-            languagesArray.add("English");
-        } else {
-            languagesArray = new ArrayList<>();
-            languagesArray.add("English");
-            languagesArray.add("Vietnamese");
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_items, languagesArray);
+        ArrayList<String> languagesAvailable;
+        languagesAvailable = new ArrayList<>();
+        languagesAvailable.add("English");
+        languagesAvailable.add("Vietnamese");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_items, languagesAvailable);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
     }
@@ -86,10 +81,12 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
             public void onClick(View v)
             {
                 //Set language of app
-                if(lang.equals("en")){
+                if(language.isChecked()) {
+                    if (lang.equals("vi")) {
+                        setAppLocale("vi");
+                    }
+                } else {
                     setAppLocale("en");
-                } else{
-                    setAppLocale("vi");
                 }
                 //Sets theme of app
                 if(theme.isChecked()) {
@@ -114,7 +111,7 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
 
     private void initSwitches() {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(Settings.this);
-        String lang = settings.getString("lang", "0");
+        String lang = settings.getString("lang", "en");
         boolean darkEnabled = settings.getBoolean("bool", false);
         theme.setChecked(darkEnabled);
         langSelected = lang;
@@ -132,11 +129,7 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
         Resources rs = getResources();
         DisplayMetrics dm = rs.getDisplayMetrics();
         Configuration conf = rs.getConfiguration();
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1){
-            conf.setLocale(new Locale(localeCode.toLowerCase()));
-        } else {
-            conf.locale = new Locale(localeCode.toLowerCase());
-        }
+        conf.locale = new Locale(localeCode.toLowerCase());
         rs.updateConfiguration(conf, dm);
     }
 

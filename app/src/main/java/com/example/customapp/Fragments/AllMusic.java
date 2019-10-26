@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.customapp.MainActivity;
 import com.example.customapp.Player;
@@ -35,7 +36,6 @@ public class AllMusic extends Fragment {
     private ListView listView;
     private Intent play, intent;
     private Button btn;
-
     private ArrayList<File> playlistSongs = new ArrayList<>();
 
     public AllMusic() { /*Required empty public constructor */ }
@@ -97,6 +97,9 @@ public class AllMusic extends Fragment {
                 for (int i = 0; i < allSongs.size() - 1; i++) {
                     if (allSongs.get(i).toString().contains(listView.getItemAtPosition(position).toString())) {
                         playlistSongs.add(allSongs.get(i));
+                        //Display song that has been added to the playlist
+                        Toast toast = Toast.makeText(getContext(), allSongs.get(i).toString().replaceAll(".+/", "").replace(".mp3","") + " has been added to the Playlist", Toast.LENGTH_SHORT);
+                        toast.show();
                     }
                 }
                 return true;
@@ -111,11 +114,15 @@ public class AllMusic extends Fragment {
                 intent = new Intent(getActivity().getBaseContext(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("playlist", playlistSongs);
+                Toast toast = Toast.makeText(getContext(), "Playlist created", Toast.LENGTH_SHORT);
+                toast.show();
                 getActivity().startActivity(intent);
             }
         });
     }
 
+    //On first load of the application, will ask for permission to read the phones interal storage
+    //If user denies, then this message will continue to appear and not work until they allow.
     private void askStoragePermissions(){
         Dexter.withActivity(getActivity()).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new PermissionListener() {
             @Override

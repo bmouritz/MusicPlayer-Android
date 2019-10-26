@@ -37,10 +37,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Creates the now playing bar if there is a song playing.
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
-            String songTitle = extras.getString("songTitle");
-            nowPlaying(songTitle);
+            if(extras.getString("songTitle") != null) {
+                String songTitle = extras.getString("songTitle");
+                nowPlaying(songTitle);
+            }
         }
 
         initUI();

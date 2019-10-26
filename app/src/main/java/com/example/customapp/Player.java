@@ -190,7 +190,7 @@ public class Player extends AppCompatActivity {
             mediaPlayer.reset();
             mediaPlayer.setDataSource(getApplicationContext(), songResourceUri);
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mediaPlayer.prepareAsync(); // prepare async to not block main thread
+            mediaPlayer.prepareAsync(); // prepare async as to not block main thread
         } catch (IOException e) {
             e.printStackTrace();
         }
