@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         songNamePlaying = findViewById(R.id.songPlaying);
     }
 
+
     private void nowPlaying(String songPlaying) {
         nowPlayingBar = findViewById(R.id.linearlayout);
         nowPlayingBar.setVisibility(View.VISIBLE);
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Deals with swapping of tabs in MainActivity
     protected void initPageController(){
         pageController = new PageController(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pageController);

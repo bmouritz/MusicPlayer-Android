@@ -8,4 +8,6 @@
     <string name="save" translatable="true">Save Playlist</string>
     <string name="clear" translatable="true">Clear Playlist</string>
     <string name="savesettings" translatable="true">Save</string>
+    <string name="appwidget_text">Placeholder</string>
+    <string name="add_widget">Add widget</string>
 </resources>

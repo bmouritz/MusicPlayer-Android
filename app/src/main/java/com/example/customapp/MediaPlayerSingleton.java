@@ -2,7 +2,7 @@ package com.example.customapp;
 
 import android.media.MediaPlayer;
 
-// Singleton to manage MediaPlayer
+// Singleton to manage MediaPlayer instances
 class MediaPlayerSingleton {
     private static MediaPlayer mediaPlayer;
 

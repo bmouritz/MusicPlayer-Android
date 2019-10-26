@@ -9,4 +9,6 @@
     <string name="save" translatable="true">Lưu lại</string>
     <string name="clear" translatable="true">Xóa danh sách phát</string>
     <string name="savesettings" translatable="true">Lưu lại</string>
+    <string name="appwidget_text">Giữ chỗ</string>
+    <string name="add_widget">Giữ chỗ</string>
 </resources>
