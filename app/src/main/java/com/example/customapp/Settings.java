@@ -26,7 +26,6 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
     private Toolbar toolbar;
     private Switch language, theme;
     private Button save;
-    private DisplayMetrics dm;
     private boolean darkEnabled;
     private Spinner langOption;
     private static String langSelected = "none";
@@ -41,7 +40,7 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
 
     //This reduces the size of the settings activity window
     private void initWindow() {
-        dm = new DisplayMetrics();
+        DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;

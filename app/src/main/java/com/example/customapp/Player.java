@@ -36,8 +36,6 @@ public class Player extends AppCompatActivity {
     private Boolean shuffled, repeated;
 
     private MediaPlayer mediaPlayer;
-    private Bundle bundle;
-    private Intent playerData;
     private String sname;
 
     @Override
@@ -109,8 +107,8 @@ public class Player extends AppCompatActivity {
     }
 
     private void initMediaPlayer() {
-        playerData = getIntent();
-        bundle = playerData.getExtras();
+        Intent playerData = getIntent();
+        Bundle bundle = playerData.getExtras();
         songFileList = (ArrayList) bundle.getParcelableArrayList("songs");
         position = bundle.getInt("position", 0);
         initPlayer(position);
