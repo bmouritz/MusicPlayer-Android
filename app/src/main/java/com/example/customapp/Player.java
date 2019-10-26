@@ -27,18 +27,18 @@ import java.util.Collections;
 import java.util.Objects;
 
 public class Player extends AppCompatActivity {
-    ArrayList<File> songFileList;
-    SeekBar seekBar;
-    TextView songTitle, curTime, totTime;
-    ImageView playBtn, nextBtn, prevBtn, repeat, shuffle;
-    int position;
-    Toolbar toolbar;
-    Boolean shuffled, repeated;
+    private ArrayList<File> songFileList;
+    private SeekBar seekBar;
+    private TextView songTitle, curTime, totTime;
+    private ImageView playBtn, nextBtn, prevBtn, repeat, shuffle;
+    private int position;
+    private Toolbar toolbar;
+    private Boolean shuffled, repeated;
 
-    MediaPlayer mediaPlayer;
-    Bundle bundle;
-    Intent playerData;
-    String sname;
+    private MediaPlayer mediaPlayer;
+    private Bundle bundle;
+    private Intent playerData;
+    private String sname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -289,7 +289,7 @@ public class Player extends AppCompatActivity {
         }
     }
 
-    public String createTimeLabel(int duration) {
+    private String createTimeLabel(int duration) {
         String timeLabel = "";
         int min = duration / 1000 / 60;
         int sec = duration / 1000 % 60;

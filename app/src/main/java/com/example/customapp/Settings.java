@@ -1,10 +1,8 @@
 package com.example.customapp;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
@@ -25,12 +23,12 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class Settings extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    Toolbar toolbar;
-    Switch language, theme;
-    Button save;
-    DisplayMetrics dm;
-    boolean darkEnabled;
-    Spinner langOption;
+    private Toolbar toolbar;
+    private Switch language, theme;
+    private Button save;
+    private DisplayMetrics dm;
+    private boolean darkEnabled;
+    private Spinner langOption;
     private static String langSelected = "none";
 
 
@@ -64,7 +62,7 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
         initSwitches();
     }
 
-    public void initSpinner(Spinner spinner) {
+    private void initSpinner(Spinner spinner) {
         ArrayList<String> languagesAvailable;
         languagesAvailable = new ArrayList<>();
         languagesAvailable.add("English");

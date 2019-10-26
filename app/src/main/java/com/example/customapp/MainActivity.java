@@ -17,27 +17,27 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    Toolbar toolbar;
-    TabLayout tabLayout;
-    TabItem currMusic, allMusic, playList;
-    ViewPager viewPager;
-    PageController pageController;
-    LinearLayout nowPlayingBar;
-    TextView songNamePlaying;
-    ImageButton playingBtn;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private TextView songNamePlaying;
+    private ImageButton playingBtn;
 
     @Override
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Creates the now playing bar if there is a song playing.
+        getExtras();
+        initUI();
+    }
+
+    //Creates the now playing bar if there is a song playing.
+    private void getExtras() {
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
             if(extras.getString("songTitle") != null) {
@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 nowPlaying(songTitle);
             }
         }
-
-        initUI();
     }
 
     @Override
@@ -72,23 +70,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void initToolbar(){
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
 
     protected void initViewByIds(){
         tabLayout = findViewById(R.id.tabLayout);
 
-        currMusic = findViewById(R.id.currentMusic);
-        allMusic = findViewById(R.id.allMusic);
-        playList = findViewById(R.id.addPlaylist);
         viewPager = findViewById(R.id.viewPager);
         songNamePlaying = findViewById(R.id.songPlaying);
     }
 
 
     private void nowPlaying(String songPlaying) {
-        nowPlayingBar = findViewById(R.id.linearlayout);
+        LinearLayout nowPlayingBar = findViewById(R.id.linearlayout);
         nowPlayingBar.setVisibility(View.VISIBLE);
         songNamePlaying = findViewById(R.id.songPlaying);
         songNamePlaying.setText(songPlaying);
@@ -115,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Deals with swapping of tabs in MainActivity
     protected void initPageController(){
-        pageController = new PageController(getSupportFragmentManager(), tabLayout.getTabCount());
+        PageController pageController = new PageController(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pageController);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager) {
