@@ -76,12 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
     protected void initViewByIds(){
         tabLayout = findViewById(R.id.tabLayout);
-
         viewPager = findViewById(R.id.viewPager);
         songNamePlaying = findViewById(R.id.songPlaying);
     }
 
-
+    //Deals with creating the nowplaying bar in MainActivity
+    //and the onclick listener.
     private void nowPlaying(String songPlaying) {
         LinearLayout nowPlayingBar = findViewById(R.id.linearlayout);
         nowPlayingBar.setVisibility(View.VISIBLE);

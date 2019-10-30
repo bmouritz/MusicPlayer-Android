@@ -20,9 +20,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class Albums extends ListFragment {
     private List<String> fileList = new ArrayList<>();
     private Intent play;
@@ -42,6 +39,7 @@ public class Albums extends ListFragment {
         return view;
     }
 
+    //Returns user to root directory of music
     private void initBtn() {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

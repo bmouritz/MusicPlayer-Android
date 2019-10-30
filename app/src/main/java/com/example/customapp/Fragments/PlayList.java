@@ -20,9 +20,6 @@ import com.example.customapp.R;
 import java.io.File;
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class PlayList extends Fragment {
     private ListView listView;
     private ArrayList<File> songFileList = new ArrayList<>();

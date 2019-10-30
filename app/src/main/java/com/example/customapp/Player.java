@@ -47,6 +47,7 @@ public class Player extends AppCompatActivity {
         initMediaPlayer();
     }
 
+    //Inflates the toolbar menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.player_menu, menu);
@@ -68,7 +69,6 @@ public class Player extends AppCompatActivity {
         songTitle = findViewById(R.id.songTitle);
         curTime = findViewById(R.id.currTime);
         totTime = findViewById(R.id.totalTime);
-
         playBtn = findViewById(R.id.playbtn);
         prevBtn = findViewById(R.id.imageView5);
         nextBtn = findViewById(R.id.imageView4);
@@ -76,11 +76,13 @@ public class Player extends AppCompatActivity {
         shuffle = findViewById(R.id.shuffle);
         repeat = findViewById(R.id.repeat);
 
+        //Set default boolean to false
         shuffled = false;
         repeated = false;
         initToolbar();
     }
 
+    //if Eq button is selected, startActivity
     private void initEQBtn() {
         Intent intent = new Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL);
         intent.putExtra(AudioEffect.EXTRA_PACKAGE_NAME, getPackageName());
@@ -245,9 +247,9 @@ public class Player extends AppCompatActivity {
                     try {
                         // create new message to send to handler
                         if (mediaPlayer.isPlaying()) {
-                            Message msg = new Message();
-                            msg.what = mediaPlayer.getCurrentPosition();
-                            handler.sendMessage(msg);
+                            Message message = new Message();
+                            message.what = mediaPlayer.getCurrentPosition();
+                            handler.sendMessage(message);
                             Thread.sleep(1000);
                         }
                     } catch (InterruptedException e) {
@@ -265,11 +267,10 @@ public class Player extends AppCompatActivity {
         public void handleMessage(Message msg) {
             int current_position = msg.what;
             seekBar.setProgress(current_position);
-            String cTime = createTimeLabel(current_position);
-            curTime.setText(cTime);
+            String currentTime = createTimeLabel(current_position);
+            curTime.setText(currentTime);
         }
     };
-
 
     private void play() {
         if (!mediaPlayer.isPlaying()) {

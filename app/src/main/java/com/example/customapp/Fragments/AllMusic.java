@@ -29,9 +29,6 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import java.io.File;
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class AllMusic extends Fragment {
     private ListView listView;
     private Intent play, intent;
@@ -52,6 +49,8 @@ public class AllMusic extends Fragment {
         return view;
     }
 
+    //Goes through directory path, and gets all music files in directory
+    //returns as a list of files.
     private ArrayList<File> getMusic(File file){
         ArrayList<File> musicLists = new ArrayList<>();
         File[] files = file.listFiles();
@@ -107,6 +106,7 @@ public class AllMusic extends Fragment {
         });
     }
 
+    //Takes in all songs selected for playlist, and passes them to the playlist fragment
     private void updateBtn() {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

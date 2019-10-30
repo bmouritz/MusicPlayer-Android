@@ -61,6 +61,7 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
         initSwitches();
     }
 
+    //Initialises spinner and adds the currently available languages
     private void initSpinner(Spinner spinner) {
         ArrayList<String> languagesAvailable;
         languagesAvailable = new ArrayList<>();
@@ -72,6 +73,7 @@ public class Settings extends AppCompatActivity implements AdapterView.OnItemSel
         spinner.setOnItemSelectedListener(this);
     }
 
+    //Saves the checked information and updates the application accordingly
     private void initButton(final String lang) {
         save.setOnClickListener(new View.OnClickListener()
         {
