@@ -182,23 +182,26 @@ public class Player extends AppCompatActivity {
             mediaPlayer.reset();
         }
 
+        //Get the position in playlist of song that was selected and set the song name to this
         sname = songFileList.get(position).getName().replace(".mp3", "").replace(".m4a", "").replace(".wav", "").replace(".m4b", "");
         songTitle.setText(sname);
+        //Get full path of song selected via URI
         Uri songResourceUri = Uri.parse(songFileList.get(position).toString());
 
         try {
-            mediaPlayer.reset();
             mediaPlayer.setDataSource(getApplicationContext(), songResourceUri);
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mediaPlayer.prepareAsync(); // prepare async as to not block main thread
+            // prepare async as to not block main thread
+            mediaPlayer.prepareAsync();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        //Async onprepared listener for when it's loaded the music
         mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                String totalTime = createTimeLabel(mediaPlayer.getDuration());
+                String totalTime = timeProgress(mediaPlayer.getDuration());
                 totTime.setText(totalTime);
                 seekBar.setMax(mediaPlayer.getDuration());
                 mediaPlayer.start();
@@ -210,7 +213,7 @@ public class Player extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 int currSongPosition = position;
-                // code to repeat songs until the
+                // code to go to next song, unless at end of playlist, then start again
                 if (currSongPosition < songFileList.size() - 1) {
                     currSongPosition++;
                     initPlayer(currSongPosition);
@@ -235,17 +238,18 @@ public class Player extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) { /* To implement */ }
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) { /* To implement */ }
         });
 
+        //Creates a new Thread to run the calculation of current time in background Thread
         new Thread(new Runnable() {
             @Override
             public void run() {
                 while (mediaPlayer != null) {
                     try {
-                        // create new message to send to handler
+                        //Create new message to send to handler
                         if (mediaPlayer.isPlaying()) {
                             Message message = new Message();
                             message.what = mediaPlayer.getCurrentPosition();
@@ -267,7 +271,7 @@ public class Player extends AppCompatActivity {
         public void handleMessage(Message msg) {
             int current_position = msg.what;
             seekBar.setProgress(current_position);
-            String currentTime = createTimeLabel(current_position);
+            String currentTime = timeProgress(current_position);
             curTime.setText(currentTime);
         }
     };
@@ -288,14 +292,14 @@ public class Player extends AppCompatActivity {
         }
     }
 
-    private String createTimeLabel(int duration) {
+    private String timeProgress(int duration) {
         String timeLabel = "";
-        int min = duration / 1000 / 60;
-        int sec = duration / 1000 % 60;
+        int mins = duration / 1000 / 60;
+        int seconds = duration / 1000 % 60;
 
-        timeLabel += min + ":";
-        if (sec < 10) timeLabel += "0";
-        timeLabel += sec;
+        timeLabel += mins + ":";
+        if (seconds < 10) timeLabel += "0";
+        timeLabel += seconds;
 
         return timeLabel;
     }
